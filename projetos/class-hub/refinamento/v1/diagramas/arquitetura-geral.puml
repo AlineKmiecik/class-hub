@@ -1,0 +1,20 @@
+@startuml
+!theme plain
+skinparam backgroundColor #F8F8F8
+skinparam linetype ortho
+
+actor "Aluno" as aluno
+actor "Professor" as professor
+actor "Administrador" as admin
+
+rectangle "Frontend\nDashboard, Projetos, Tarefas, Entregas" as frontend
+rectangle "Backend\nRegras de negócio\nAutenticação\nNotificações" as backend
+database "Banco de Dados\nUsuários, Projetos, Tarefas, Entregas, Feedbacks" as db
+
+aluno --> frontend
+professor --> frontend
+admin --> frontend
+frontend --> backend : API REST
+backend --> db : consultas e persistência
+backend --> frontend : respostas e notificações
+@enduml
